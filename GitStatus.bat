@@ -1,4 +1,4 @@
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
 git status
 git submodule foreach git status

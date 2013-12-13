@@ -3,7 +3,7 @@
 @set branchName1=%1
 @set branchName2=%2
 
-if %3 == "C:\dev\MetraNet" goto BeginWork
+if %3 == "%DEVDIR%" goto BeginWork
   
 @if NOT "%branchName1%" == "develop" set branchName1=%branchName1%@MetraNet
 @if NOT "%branchName2%" == "develop" set branchName2=%branchName2%@MetraNet

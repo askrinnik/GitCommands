@@ -1,4 +1,4 @@
-@pushd "C:\Users\Administrator\Documents\Panels\Git"
+@pushd "C:\Users\Administrator\Documents\Panels\GitCommands"
 
 @call MergeBranchesWithoutPush %1 %2
 

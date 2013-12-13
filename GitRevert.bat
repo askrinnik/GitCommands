@@ -1,4 +1,4 @@
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
 git reset --hard
 git submodule foreach git reset --hard

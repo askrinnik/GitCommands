@@ -1,11 +1,11 @@
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
 git checkout %1
 
-@set submoduleName=%1
-@if NOT "%submoduleName%" == "develop" set submoduleName=%submoduleName%@MetraNet
+@set branchName=%1
+@if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNet
 
-git submodule foreach git checkout "%submoduleName%"
+git submodule foreach git checkout "%branchName%"
 
 @popd
 @pause

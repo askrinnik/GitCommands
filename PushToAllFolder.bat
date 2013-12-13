@@ -3,12 +3,12 @@
 @echo .
 @pause
 
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
-@set submoduleName=%1
-@if NOT "%submoduleName%" == "develop" set submoduleName=%submoduleName%@MetraNet
+@set branchName=%1
+@if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNet
 
-git submodule foreach git push -v --progress  "origin" %submoduleName%:%submoduleName%
+git submodule foreach git push -v --progress  "origin" %branchName%:%branchName%
 git push -v --progress  "origin" %1:%1
 
 @popd

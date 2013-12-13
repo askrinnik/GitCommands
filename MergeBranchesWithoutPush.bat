@@ -1,4 +1,4 @@
-@pushd "C:\Users\Administrator\Documents\Panels\Git"
+@pushd "C:\Users\Administrator\Documents\Panels\GitCommands"
 
 @call SwitchToBranchInAllFolder.bat %1
 @call PullInAllFolder.bat
@@ -18,12 +18,12 @@
 
 @popd
 
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
-@set submoduleName=%1
-@if NOT "%submoduleName%" == "develop" set submoduleName=%submoduleName%@MetraNet
+@set branchName=%1
+@if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNet
 
-git submodule foreach git merge %submoduleName%
+git submodule foreach git merge %branchName%
 git merge %1
 
 @popd

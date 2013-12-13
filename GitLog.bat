@@ -1,4 +1,4 @@
-@pushd c:\Dev\MetraNet
+@pushd %DEVDIR%
 
 @set folder=%1
 
