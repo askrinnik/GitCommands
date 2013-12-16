@@ -1,4 +1,4 @@
-@pushd "C:\Users\Administrator\Documents\Panels\GitCommands"
+@pushd %GitCmdMNDev%\Helpers
 
 @set branchName=%1
 @if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNet
@@ -13,7 +13,7 @@
 @call DeleteBranch %DEVDIR%\MvmCore %branchName%
 @call DeleteBranch %DEVDIR%\TestsDatabase %branchName%
 @call DeleteBranch %DEVDIR%\ICE %branchName%
-@call DeleteBranch %DEVDIR%\Source/Thirdparty %branchName%
+@call DeleteBranch %DEVDIR%\Source\Thirdparty %branchName%
 
 
 @popd
