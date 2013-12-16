@@ -1,4 +1,4 @@
-@pushd "C:\Users\Administrator\Documents\Panels\GitCommands"
+@pushd %GitCmdMNDev%
 
 @call SwitchToBranchInAllFolder.bat %1
 @call PullInAllFolder.bat
