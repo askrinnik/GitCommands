@@ -2,7 +2,7 @@
 
 @set folder=%1
 
-@REM Replase / to \ for correct folder name
+@REM Replace / to \ for correct folder name
 @set folder=%folder:/=\%
 
 @pushd %folder%

@@ -7,8 +7,8 @@ set period=5.days
 @git submodule foreach "\echo $path >>%tmpFile%"
 @popd
 
-call GitLog.bat %DEVDIR% %period% >%filename%
-@FOR /F %%G IN (%tmpFile%) DO ( call GitLog.bat %%G %period% >>%filename% )
+call %GitCmdMNDev%\Helpers\GitLog.bat %DEVDIR% %period% >%filename%
+@FOR /F %%G IN (%tmpFile%) DO ( call %GitCmdMNDev%\Helpers\GitLog.bat %%G %period% >>%filename% )
 @del %tmpFile%"
 
 @Echo The list of changes was saved to %filename%
