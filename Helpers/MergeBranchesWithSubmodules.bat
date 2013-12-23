@@ -2,7 +2,7 @@
 
 @call MergeBranchesWithSubmodulesWithoutPush %1 %2
 
-@call PushToAllFolder.bat %2
+@call PushWithSubmodules.bat %2
 
 @popd
 
