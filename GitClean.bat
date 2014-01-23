@@ -1,6 +1,7 @@
 @pushd %DEVDIR%
 
-git clean -d -f
-git submodule foreach git clean -d -f
+git clean -df -xf
+git submodule foreach git clean -df -xf
+
 @popd
 @pause
