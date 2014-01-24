@@ -1,5 +1,7 @@
 set filename=c:\1.csv
 set period=5.days
+:set period="2014/01/16"
+
 
 @set tmpFile=c:\Pathes.txt
 @REM Get list of folders with submodules to %tmpFile%
