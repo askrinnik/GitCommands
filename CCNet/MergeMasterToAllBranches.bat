@@ -1,3 +1,8 @@
+@pushd %DEVDIR%\..\CCNet
+git.exe checkout master
+@popd
+pause
+
 call MergeMasterToBranch.bat feature/DevX
 call MergeMasterToBranch.bat feature/CMI
 call MergeMasterToBranch.bat feature/UiUx
