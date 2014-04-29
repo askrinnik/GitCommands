@@ -1,7 +1,7 @@
 @pushd %GitCmdMNDev%\Helpers
 
 @set branchName=%1
-@if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNet
+@if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNetDev
 
 
 @call DeleteBranch %DEVDIR% %1
