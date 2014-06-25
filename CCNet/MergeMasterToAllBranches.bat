@@ -8,7 +8,9 @@ call MergeMasterToBranch.bat feature/CMI
 call MergeMasterToBranch.bat feature/Billing
 call MergeMasterToBranch.bat feature/TeamTA
 call MergeMasterToBranch.bat feature/UiUx
-call MergeMasterToBranch.bat feature/Sust
+call MergeMasterToBranch.bat feature/Sust2
+call MergeMasterToBranch.bat feature/Engines
+call MergeMasterToBranch.bat feature/Reporting
 call MergeMasterToBranch.bat develop
 
 @pushd %DEVDIR%\..\CCNet
