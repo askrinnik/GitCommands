@@ -1,12 +1,20 @@
 @pushd %DEVDIR%
 
-@echo %time%
-@set BeginTime=%time%
+@SET progress_param=-v --progress
+@IF "%2%"=="hide_progress" (
+  SET progress_param=--no-progress
+)
 
-git pull -v --progress  "origin"
-git submodule foreach git pull -v --progress  "origin"
-
-@echo From %BeginTime% to %time%
+git pull %progress_param% --prune "origin"
+@if not %errorlevel%==0 (
+  exit /b %errorlevel%
+)
+git submodule foreach git pull %progress_param% --prune "origin"
+@if not %errorlevel%==0 (
+  exit /b %errorlevel%
+)
 
 @popd
+@IF NOT "%1%"=="skip_pause" (
 @pause
+)
