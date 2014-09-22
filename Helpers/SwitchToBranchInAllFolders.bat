@@ -17,3 +17,4 @@ git submodule foreach git checkout "%branchName%"
 @popd
 @IF NOT "%2%"=="skip_pause" (
 @pause
+)
