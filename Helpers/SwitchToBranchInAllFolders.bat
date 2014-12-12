@@ -3,18 +3,18 @@
 
 @pushd %DEVDIR%
 
-git checkout %1
+git checkout %branchName% 2>&1
 @if not %errorlevel%==0 (
-  echo git checkout error 1>&2
+  echo Error in git checkout %branchName% 1>&2
   @if not "%isSkipPause%"=="skip_pause" pause
   exit /b %errorlevel%
 )
 
 @if NOT "%branchName%" == "develop" set branchName=%branchName%@MetraNetDev
 
-git submodule foreach git checkout "%branchName%"
+git submodule foreach git checkout "%branchName%" 2>&1
 @if not %errorlevel%==0 (
-  echo git submodule foreach git checkout error 1>&2
+  echo Error in git submodule foreach git checkout "%branchName%" 1>&2
   @if not "%isSkipPause%"=="skip_pause" pause
   exit /b %errorlevel%
 )

@@ -8,13 +8,13 @@
 
 git submodule foreach git merge %srcBranchSubmodules%
 @if not %errorlevel%==0 (
-  echo git submodule foreach git merge error 1>&2
+  echo Error in git submodule foreach git merge %srcBranchSubmodules% 1>&2
   exit /b %errorlevel%
 )
 
 git merge %srcBranch%
 @if not %errorlevel%==0 (
-  echo git merge error 1>&2
+  echo Error in git merge %srcBranch% 1>&2
   exit /b %errorlevel%
 )
 
