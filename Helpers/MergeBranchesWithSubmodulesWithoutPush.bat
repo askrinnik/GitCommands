@@ -14,8 +14,6 @@
 @echo .
 @echo checkout %dstBranch% and pull
 @echo .
-@if not "%isSkipPause%"=="skip_pause" pause
-
 @call SwitchToBranchInAllFolders.bat %dstBranch% %isSkipPause%
 @if not %errorlevel%==0 exit /b %errorlevel%
 
