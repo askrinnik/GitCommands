@@ -2,8 +2,9 @@
 @set dstBranch=%2
 @set isSkipPause=%3
 @set isHideProgress=%4
+@set currentDir=%~dp0
 
-@pushd %GitCmdMNDev%\Helpers
+@pushd %currentDir%
 
 @call SwitchToBranchInAllFolders.bat %srcBranch% %isSkipPause%
 @if not %errorlevel%==0 exit /b %errorlevel%

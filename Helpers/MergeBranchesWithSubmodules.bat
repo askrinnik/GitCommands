@@ -2,13 +2,14 @@
 @set dstBranch=%2
 @set isSkipPause=%3
 @set isHideProgress=%4
+@set currentDir=%~dp0
 
-@pushd "%GitCmdMNDev%\Helpers"
+@pushd "%currentDir%"
 
 @call MergeBranchesWithSubmodulesWithoutPush %srcBranch% %dstBranch% %isSkipPause% %isHideProgress%
 @if not %errorlevel%==0 (
-  @if not "%isSkipPause%"=="skip_pause" pause
-  exit /b %errorlevel%
+  @if "%isSkipPause%"=="skip_pause" exit /b %errorlevel%
+  pause
 )
 
 @call PushWithSubmodules.bat %dstBranch% %isSkipPause% 
