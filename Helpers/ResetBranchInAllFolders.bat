@@ -6,11 +6,19 @@
 
 @pushd %DEVDIR%
 
-@set command=git checkout %branchName%
+@set command=git reset --hard origin/%branchName%
 %command% 2>&1
 @if not %errorlevel%==0 goto error
 
-@set command=git submodule foreach git checkout "%branchNameSubmodule%"
+@set command=git submodule foreach git reset --hard origin/"%branchNameSubmodule%"
+%command% 2>&1
+@if not %errorlevel%==0 goto error
+
+@set command=git clean -df
+%command% 2>&1
+@if not %errorlevel%==0 goto error
+
+@set command=git submodule foreach git clean -df
 %command% 2>&1
 @if not %errorlevel%==0 goto error
 
@@ -23,3 +31,5 @@
 @popd
 @if not "%isSkipPause%"=="skip_pause" pause
 @exit /b %errorlevel%
+
+

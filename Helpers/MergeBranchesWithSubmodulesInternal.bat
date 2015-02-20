@@ -1,22 +1,25 @@
-@set srcBranch=%1
+@set branchName=%1
 @set isSkipPause=%2
+
+@set branchNameSubmodule=%branchName%
+@if NOT "%branchName%" == "develop" set branchNameSubmodule=%branchNameSubmodule%@MetraNetDev
 
 @pushd %DEVDIR%
 
-@set srcBranchSubmodules=%srcBranch%
-@if NOT "%srcBranchSubmodules%" == "develop" set srcBranchSubmodules=%srcBranchSubmodules%@MetraNetDev
+@set command=git submodule foreach git merge origin/%branchNameSubmodule%
+%command% 2>&1
+@if not %errorlevel%==0 goto error
 
-git submodule foreach git merge %srcBranchSubmodules%
-@if not %errorlevel%==0 (
-  echo Error in git submodule foreach git merge %srcBranchSubmodules% 1>&2
-  exit /b %errorlevel%
-)
+@set command=git merge origin/%branchName%
+%command% 2>&1
+@if not %errorlevel%==0 goto error
 
-git merge %srcBranch%
-@if not %errorlevel%==0 (
-  echo Error in git merge %srcBranch% 1>&2
-  exit /b %errorlevel%
-)
+@goto done
 
+:error
+@echo Error in %command% 1>&2
+
+:done
 @popd
 @if not "%isSkipPause%"=="skip_pause" pause
+@exit /b %errorlevel%

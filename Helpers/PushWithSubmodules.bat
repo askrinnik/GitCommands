@@ -1,6 +1,9 @@
 @set branchName=%1
 @set isSkipPause=%2
 
+@set branchNameSubmodule=%branchName%
+@if NOT "%branchName%" == "develop" set branchNameSubmodule=%branchNameSubmodule%@MetraNetDev
+
 @echo .
 @echo push to %branchName% 
 @echo .
@@ -8,23 +11,21 @@
 
 @pushd %DEVDIR%
 
-@set branchNameSubmodules=%branchName%
-@if NOT "%branchNameSubmodules%" == "develop" set branchNameSubmodules=%branchNameSubmodules%@MetraNetDev
+@set command=git submodule foreach git push -v --progress  "origin" %branchNameSubmodule%:%branchNameSubmodule%
+%command% 2>&1
+@if not %errorlevel%==0 goto error
 
-git submodule foreach git push -v --progress  "origin" %branchNameSubmodules%:%branchNameSubmodules% 2>&1
-@if not %errorlevel%==0 (
-  echo Error in git submodule foreach git push -v --progress  "origin" 1>&2
-  @if not "%isSkipPause%"=="skip_pause" pause
-  exit /b %errorlevel%
-)
+@set command=git push -v --progress  "origin" %branchName%:%branchName%
+%command% 2>&1
+@if not %errorlevel%==0 goto error
 
-git push -v --progress  "origin" %branchName%:%branchName% 2>&1
-@if not %errorlevel%==0 (
-  echo Error in git push -v --progress  "origin" %branchName%:%branchName% 1>&2
-  @if not "%isSkipPause%"=="skip_pause" pause
-  exit /b %errorlevel%
-)
+@goto done
 
+:error
+@echo Error in %command% 1>&2
+
+:done
 @popd
-
 @if not "%isSkipPause%"=="skip_pause" pause
+@exit /b %errorlevel%
+

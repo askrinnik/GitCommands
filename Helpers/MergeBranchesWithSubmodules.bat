@@ -8,8 +8,8 @@
 
 @call MergeBranchesWithSubmodulesWithoutPush %srcBranch% %dstBranch% %isSkipPause% %isHideProgress%
 @if not %errorlevel%==0 (
-  @if "%isSkipPause%"=="skip_pause" exit /b %errorlevel%
-  pause
+  @if not "%isSkipPause%"=="skip_pause" pause
+  exit /b %errorlevel%
 )
 
 @call PushWithSubmodules.bat %dstBranch% %isSkipPause% 
