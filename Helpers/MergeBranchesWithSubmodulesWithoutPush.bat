@@ -8,7 +8,7 @@
 @REM update the repository
 git fetch && git submodule foreach git fetch
 @REM Clean untracked files
-git clean -df && git submodule foreach git clean -df
+git clean -df -xf && git submodule foreach git clean -df -xf
 @popd
 
 @pushd %currentDir%
