@@ -4,9 +4,14 @@
 @set isHideProgress=%4
 @set currentDir=%~dp0
 
-@pushd %currentDir%
-
+@pushd %DEVDIR%
+@REM update the repository
 git fetch && git submodule foreach git fetch
+@REM Clean untracked files
+git clean -df && git submodule foreach git clean -df
+@popd
+
+@pushd %currentDir%
 
 call SwitchToBranchInAllFolders.bat %dstBranch% %isSkipPause%
 @if not %errorlevel%==0 exit /b %errorlevel%
