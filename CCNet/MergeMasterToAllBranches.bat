@@ -11,6 +11,7 @@ call MergeMasterToBranch.bat feature/UiUx
 call MergeMasterToBranch.bat feature/Sust2
 call MergeMasterToBranch.bat feature/Engines
 call MergeMasterToBranch.bat feature/Reporting
+call MergeMasterToBranch.bat feature/devops
 call MergeMasterToBranch.bat develop
 
 @pushd %DEVDIR%\..\CCNet
