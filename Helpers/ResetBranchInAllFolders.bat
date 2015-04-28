@@ -14,11 +14,11 @@
 %command% 2>&1
 @if not %errorlevel%==0 goto error
 
-@set command=git clean -df
+@set command=git clean -dfx
 %command% 2>&1
 @if not %errorlevel%==0 goto error
 
-@set command=git submodule foreach git clean -df
+@set command=git submodule foreach git clean -dfx
 %command% 2>&1
 @if not %errorlevel%==0 goto error
 

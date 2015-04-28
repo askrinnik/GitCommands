@@ -5,13 +5,16 @@
 @set currentDir=%~dp0
 
 @pushd %DEVDIR%
+
 @REM update the repository
 git fetch && git submodule foreach git fetch
-@REM Clean untracked files
-git clean -df -xf && git submodule foreach git clean -df -xf
+
 @popd
 
 @pushd %currentDir%
+
+call ResetBranchInAllFolders.bat %srcBranch% %isSkipPause%
+@if not %errorlevel%==0 exit /b %errorlevel%
 
 call SwitchToBranchInAllFolders.bat %dstBranch% %isSkipPause%
 @if not %errorlevel%==0 exit /b %errorlevel%
@@ -19,6 +22,7 @@ call SwitchToBranchInAllFolders.bat %dstBranch% %isSkipPause%
 @REM call ResetBranchInAllFolders.bat %dstBranch% %isSkipPause%  <- it deletes previous commits.But we need them, because might fix conflicts and run merge again
 call ..\PullInAllFolders.bat %isSkipPause% %isHideProgress%
 @if not %errorlevel%==0 exit /b %errorlevel%
+
 
 @echo .
 @echo merge from %srcBranch% to %dstBranch%
