@@ -7,7 +7,7 @@
 @pushd %DEVDIR%
 
 @REM update the repository
-git fetch && git submodule foreach git fetch
+git fetch --prune && git submodule foreach git fetch --prune 
 
 @popd
 
