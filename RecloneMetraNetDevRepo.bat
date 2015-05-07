@@ -12,7 +12,7 @@ git.exe clone -q --recursive "https://github.com/MetraTech/MetraNetDev.git" "%DE
 git.exe submodule update --init 
 @if %errorlevel% gtr 0 (goto error)
 
-call %ROOTDIR%\Build\Tools\Git\SwitchToBranchInAllFolder.bat %BRANCH% skip_pause
+call %ROOTDIR%\Build\Tools\Git\SwitchToBranchInAllFolders.bat %BRANCH% skip_pause
 @if %errorlevel% gtr 0 (goto error)
 
 call %ROOTDIR%\Build\Tools\Git\PullInAllFolder.bat skip_pause 

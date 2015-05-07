@@ -13,8 +13,8 @@ git fetch --prune && git submodule foreach git fetch --prune
 
 @pushd %currentDir%
 
-call ResetBranchInAllFolders.bat %srcBranch% %isSkipPause%
-@if not %errorlevel%==0 exit /b %errorlevel%
+call ..\GitClean.bat skip_pause
+call ..\GitRevert.bat %isSkipPause%
 
 call SwitchToBranchInAllFolders.bat %dstBranch% %isSkipPause%
 @if not %errorlevel%==0 exit /b %errorlevel%
