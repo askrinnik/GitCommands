@@ -15,7 +15,7 @@ git.exe submodule update --init
 call %ROOTDIR%\Build\Tools\Git\SwitchToBranchInAllFolders.bat %BRANCH% skip_pause
 @if %errorlevel% gtr 0 (goto error)
 
-call %ROOTDIR%\Build\Tools\Git\PullInAllFolder.bat skip_pause 
+call %ROOTDIR%\Build\Tools\Git\PullInAllFolders.bat skip_pause 
 @if %errorlevel% gtr 0 (goto error)
 
 @echo Reclonning succeed
